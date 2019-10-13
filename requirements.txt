@@ -4,3 +4,4 @@ jupyter
 xlrd
 geopy
 numpy
+opencv-python
