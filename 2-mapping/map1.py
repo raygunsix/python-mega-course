@@ -20,7 +20,12 @@ map = folium.Map(location=[38.58,-99.09],zoom_start=6,tiles = "Stamen Terrain")
 fg = folium.FeatureGroup(name="My Map")
 
 for lt, ln, el in zip(lat, lon, elev):
-    fg.add_child(folium.CircleMarker(location=[lt, ln],popup=str(el) + " m",stroke=True,color="grey",fill=True,fill_opacity=0.7,fill_color=elevation_style(el)))
+    fg.add_child(folium.CircleMarker(location=[lt, ln],popup=str(el) + " m",
+    stroke=True,color="grey",fill=True,fill_opacity=0.7,fill_color=elevation_style(el)))
+
+fg.add_child(folium.GeoJson(data=open('world.json','r',encoding='utf-8-sig').read(),
+style_function=lambda x: {'fillColor':'green' if x['properties']['POP2005'] < 10000000 
+    else 'orange' if 100000000 <= x['properties']['POP2005'] < 200000000 else 'red'}))
 
 map.add_child(fg)
 
