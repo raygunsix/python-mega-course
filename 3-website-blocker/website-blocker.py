@@ -1,6 +1,6 @@
 import time
 from datetime import datetime as dt
-hosts_path="/etc/hosts"
+hosts_path="hosts.sample"
 redirect="127.0.0.1"
 website_list=["facebook.com", "www.facebook.com"]
 
